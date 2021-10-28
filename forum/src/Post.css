@@ -1,0 +1,14 @@
+.title {
+    color:blue;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.content {
+    padding: 20px;
+}
+
+.delete {
+    position: right;
+    margin-left: 500px;
+}
