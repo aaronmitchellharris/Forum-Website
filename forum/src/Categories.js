@@ -10,7 +10,7 @@ const Categories = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch("https://concise-bloom-327806.wl.r.appspot.com/categories")
+        fetch("https://speakit-cs361.wl.r.appspot.com/categories/list")
           .then(res => res.json())
           .then(
             (result) => {
@@ -40,7 +40,7 @@ const Categories = () => {
 
                     {items.map(item => (
                         <Col>
-                        <Card as={Link} to={item.name.toString()} className="categories" key={item.name}>
+                        <Card as={Link} to={"categories/"+item.name.toString()} className="categories" key={item.name}>
                         {item.name}
                         </Card>
                         </Col>

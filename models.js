@@ -24,7 +24,7 @@ const toDatastore = (obj, nonIndexed) => {
     return results;
 };
 
-const create = (kind, data) => {
+const create = async (kind, data) => {
     
     const key = datastore.key(kind);
 
@@ -33,7 +33,7 @@ const create = (kind, data) => {
     });
 };
 
-const read = (kind, id) => {
+const read = async (kind, id) => {
 
     const key = datastore.key([kind, id]);
 
@@ -46,30 +46,21 @@ const read = (kind, id) => {
     });
 };
 
-const list = (kind, cursor) => {
+const list = async (kind) => {
     
-    let q = datastore.createQuery(kind).limit(3);
-
-    if (cursor) {
-        q = q.start(cursor);
-    }
+    let q = datastore.createQuery(kind);
 
     return datastore.runQuery(q).then(entities => {
         
         const list = {
-            "results": entities[0].map(fromDatastore),
-            "cursor": null
+            "results": entities[0].map(fromDatastore)
         };
-
-        if (entities[1].moreResults !== Datastore.NO_MORE_RESULTS) {
-            list.cursor = encodeURIComponent(entities[1].endCursor);
-        }
 
         return list;
     });
 };
 
-const update = (kind, id, data) => {
+const update = async (kind, id, data) => {
 
     const key = datastore.key([kind, id]);
 
@@ -84,7 +75,7 @@ const update = (kind, id, data) => {
     });
 };
 
-const _delete = (kind, id) => {
+const _delete = async (kind, id) => {
     
     const key = datastore.key([kind, id]);
 

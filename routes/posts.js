@@ -28,6 +28,7 @@ router.post('/', (req, res) => {
             "dislikes": body.dislikes,
             "content": body.content,
             "comments": body.comments,
+            "thumbnail": body.thumbnail,
             "self": createSelf(req, id)
         };
 
@@ -60,6 +61,7 @@ router.get('/:post_id', (req, res) => {
                 "likes": obj.likes,
                 "dislikes": obj.dislikes,
                 "content": obj.content,
+                "thumbnail": obj.thumbnail,
                 "self": createSelf(req, id)
             };
 

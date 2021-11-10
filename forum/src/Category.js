@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Container, Row, Col } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
+import { Button, Card, Container, Row, Col } from 'react-bootstrap'
+import { Link, useParams } from 'react-router-dom'
 import Post from './Post'
 import CreatePost from './CreatePost'
 import './Category.css';
@@ -13,7 +13,7 @@ const Category = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [posts, setPosts] = useState([]);
 
-    let URL = "https://concise-bloom-327806.wl.r.appspot.com/categories/" + {category}.category + "/posts";
+    let URL = "https://speakit-cs361.wl.r.appspot.com/categories/" + {category}.category + "/posts";
     useEffect(() => {
         fetch(URL)
           .then(res => res.json())
@@ -52,7 +52,8 @@ const Category = () => {
                 <Col>
                 <Container>
 
-                        <CreatePost category={category} setState={setPosts}/>
+                        <Button as={Link} to={category+"/create"} variant="primary" type="submit">Create Post</Button>
+                        {/*<CreatePost category={category} setState={setPosts}>*/}
 
                 </Container>
                 </Col>

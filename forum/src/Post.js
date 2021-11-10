@@ -34,7 +34,7 @@ const Post = (props) => {
         fetch(URL, {
             method: 'DELETE'
         }).then(() => {
-            fetch("https://concise-bloom-327806.wl.r.appspot.com/categories/" + props.category + "/posts")
+            fetch("https://speakit-cs361.wl.r.appspot.com/categories/" + props.category + "/posts")
             .then(res => res.json()
                 .then((result) => {
                     //setIsLoaded(true);
@@ -64,7 +64,7 @@ const Post = (props) => {
                     <Card>
                         <Card.Text xs="1">
                             <Row>
-                            <Col md={{span: 2}}><Image style={width} src="https://i.redd.it/6zyzrsgioxv71.jpg" className=""/></Col>
+                            <Col md={{span: 2}}><Image style={width} src={item.thumbnail} thumbnail/></Col>
                             <Col md={{span: 2}}><span className="title">{item.title}</span></Col>
                             <Col md={{span: 2, offset: 6}}><Button variant="danger" onClick={deletePost}>Delete</Button></Col>
 
@@ -86,3 +86,4 @@ const Post = (props) => {
 }
 
 export default Post
+//"https://i.redd.it/6zyzrsgioxv71.jpg"

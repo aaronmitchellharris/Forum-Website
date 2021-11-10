@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom'
 import { Button, Container, Card, Image, Form } from 'react-bootstrap'
 import './CreatePost.css';
+import ImageSelector from './ImageSelector'
 
 const CreatePost = (props) => {
     
+    let {category} = useParams();
+
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [images, setImages] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         const formData = new FormData(event.target),
             formDataObj = Object.fromEntries(formData.entries())
-            formDataObj.category = props.category
+            formDataObj.category = category
 
         
-        let URL = "https://concise-bloom-327806.wl.r.appspot.com/posts";
+        let URL = "https://speakit-cs361.wl.r.appspot.com/posts";
         fetch(URL, {
             method: 'POST',
             headers: {
@@ -26,12 +31,12 @@ const CreatePost = (props) => {
         }).then(() => {
             setSubmitted(true);
         }).then(() => {
-            fetch("https://concise-bloom-327806.wl.r.appspot.com/categories/" + props.category + "/posts")
+            fetch("https://speakit-cs361.wl.r.appspot.com/categories/" + category + "/posts")
             .then(res => res.json()
                 .then((result) => {
                     //setIsLoaded(true);
                 //console.log(result)
-                props.setState(result);
+                //props.setState(result);
                 },
                 (error) => {
                     //setIsLoaded(true);
@@ -40,7 +45,9 @@ const CreatePost = (props) => {
                 )
             )
         });
-};
+    };
+    
+    
 
     //useEffect(() => {}, [submitted])
     
@@ -49,6 +56,8 @@ const CreatePost = (props) => {
     } else {
         return (
             <div>
+                <h1>Creating Post for {category}</h1>
+
                 <Container>
                 <Card className="CreatePost">
                     <Form onSubmit={handleSubmit}>
@@ -60,6 +69,8 @@ const CreatePost = (props) => {
                             <Form.Label>Post Content</Form.Label>
                             <Form.Control as="textarea" placeholder="Enter Content" name="content"/>
                         </Form.Group>
+
+                        <ImageSelector/>
 
                         <Button variant="primary" type="submit">Create Post</Button>
                     </Form>
