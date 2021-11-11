@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Card, Image, Accordion, Button, Row, Col } from 'react-bootstrap'
+import { Container, Card, Image, Button, Row, Col } from 'react-bootstrap'
 import './Post.css';
 
 const width = {
@@ -38,7 +38,7 @@ const Post = (props) => {
             .then(res => res.json()
                 .then((result) => {
                     //setIsLoaded(true);
-                //console.log(result)
+                    //console.log(result)
                 props.setState(result);
                 },
                 (error) => {

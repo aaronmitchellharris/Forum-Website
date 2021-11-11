@@ -19,7 +19,6 @@ app.all('*', (req, res) => {
   res.sendFile(path.resolve('build', 'index.html'));
 });
 
-
 // Listen to the App Engine-specified port, or 8080 otherwise
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

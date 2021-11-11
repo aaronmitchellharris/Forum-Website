@@ -52,7 +52,13 @@ const CreatePost = (props) => {
     //useEffect(() => {}, [submitted])
     
     if (submitted) {
-        return <h1>Post Created Successfully!</h1>
+        return (
+            <div>
+                <h1>Post Created Successfully!</h1>
+
+                <Button as={Link} to={"/categories/"+category}>Back to {category}</Button>
+            </div>
+        )
     } else {
         return (
             <div>
