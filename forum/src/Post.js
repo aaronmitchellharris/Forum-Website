@@ -1,4 +1,3 @@
-import { prependOnceListener } from 'process';
 import React, { useState, useEffect } from 'react';
 import { Container, Card, Image, Button, Row, Col, Form } from 'react-bootstrap'
 import './Post.css';
@@ -23,10 +22,8 @@ const Post = (props) => {
           .then(
             (result) => {
               setIsLoaded(true);
-              console.log("result", result)
               setItem(result);
               setComments(result.comments);
-              console.log("comments", comments)
             },
             (error) => {
               setIsLoaded(true);
@@ -42,13 +39,11 @@ const Post = (props) => {
             fetch("https://speakit-cs361.wl.r.appspot.com/categories/" + props.category + "/posts")
             .then(res => res.json()
                 .then((result) => {
-                    //setIsLoaded(true);
-                    //console.log(result)
+
                 props.setState(result);
                 },
                 (error) => {
-                    //setIsLoaded(true);
-                    //setError(error);
+
                 }
                 )
             )
@@ -79,7 +74,6 @@ const Post = (props) => {
                 fetch(props.self)
                 .then((res) => res.json())
                 .then(result => {
-                    console.log(result)
                     setItem(result)
                 })
                 
@@ -146,7 +140,6 @@ const Post = (props) => {
         }).then(() => {
             fetch("https://speakit-cs361.wl.r.appspot.com/posts/"+item.id+"/comments").then(
                 list => list.json()).then(result => {
-                    console.log("hey", result)
                     setComments(result)
             })
         });
@@ -251,4 +244,3 @@ const Post = (props) => {
 }
 
 export default Post
-//"https://i.redd.it/6zyzrsgioxv71.jpg"

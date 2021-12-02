@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Button, Card, Container, Row, Col } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 import Post from './Post'
-import CreatePost from './CreatePost'
 import './Category.css';
 
 const Category = (props) => {
@@ -20,7 +19,6 @@ const Category = (props) => {
           .then(
             (result) => {
               setIsLoaded(true);
-              console.log(result)
               setPosts(result);
             },
             (error) => {
@@ -53,7 +51,6 @@ const Category = (props) => {
                 <Container>
 
                         <Button as={Link} to={category+"/create"} variant="primary" type="submit">Create Post</Button>
-                        {/*<CreatePost category={category} setState={setPosts}>*/}
 
                 </Container>
                 </Col>

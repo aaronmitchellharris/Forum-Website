@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Container, Row, Col } from 'react-bootstrap'
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Categories.css';
 
 const Categories = () => {
@@ -15,7 +15,6 @@ const Categories = () => {
           .then(
             (result) => {
               setIsLoaded(true);
-              console.log(result.results)
               setItems(result.results);
             },
             (error) => {

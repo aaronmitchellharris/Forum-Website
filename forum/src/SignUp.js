@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Card, Image, Accordion, Button, Row, Col, Form } from 'react-bootstrap'
+import React from 'react';
+import { Container, Card,  Button, Form } from 'react-bootstrap'
 
 
 const SignUp = (props) => {
@@ -18,7 +18,6 @@ const SignUp = (props) => {
             },
             body: JSON.stringify(formDataObj)
         }).then(id => {
-            console.log(id.id)
             props.setState(id);
         })
     };

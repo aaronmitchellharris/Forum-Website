@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
-import { Button, Container, Card, Image, Form } from 'react-bootstrap'
+import { Button, Container, Card, Form } from 'react-bootstrap'
 import './CreatePost.css';
 import ImageSelector from './ImageSelector'
 
@@ -8,10 +8,7 @@ const CreatePost = (props) => {
     
     let {category} = useParams();
 
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
     const [submitted, setSubmitted] = useState(false);
-    const [images, setImages] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -35,22 +32,15 @@ const CreatePost = (props) => {
             fetch("https://speakit-cs361.wl.r.appspot.com/categories/" + category + "/posts")
             .then(res => res.json()
                 .then((result) => {
-                    //setIsLoaded(true);
-                //console.log(result)
-                //props.setState(result);
+
                 },
                 (error) => {
-                    //setIsLoaded(true);
-                    //setError(error);
+
                 }
                 )
             )
         });
     };
-    
-    
-
-    //useEffect(() => {}, [submitted])
     
     if (submitted) {
         return (

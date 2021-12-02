@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Card, Image, Accordion, Button, Row, Col, Form } from 'react-bootstrap'
-import { Link, useParams } from 'react-router-dom'
+import React, { useState} from 'react';
+import { Container, Card, Button, Form } from 'react-bootstrap'
 import SignUp from './SignUp';
 
 const NotLoggedIn = (props) => {
@@ -22,7 +21,6 @@ const NotLoggedIn = (props) => {
             },
             body: JSON.stringify(formDataObj)
         }).then((res) => res.json()).then(response => {
-            console.log(response)
             if (response.auth) {
                 props.setState(response.id);
             } else {

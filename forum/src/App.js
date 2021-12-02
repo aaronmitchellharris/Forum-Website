@@ -1,14 +1,13 @@
 import './App.css';
-import qs from 'qs'
 import Header from './Header'
 import Home from './Home'
 import Categories from './Categories'
 import Category from './Category'
 import CreatePost from './CreatePost'
 import User from './User';
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { Card, Container, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {

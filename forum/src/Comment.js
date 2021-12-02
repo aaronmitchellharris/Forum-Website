@@ -1,11 +1,5 @@
-import { prependOnceListener } from 'process';
 import React, { useState, useEffect } from 'react';
-import { Container, Card, Image, Button, Row, Col, Form } from 'react-bootstrap'
-
-const width = {
-    width: 100,
-    padding: 10
-}
+import { Container, Card, Button } from 'react-bootstrap'
 
 const Comment = (props) => {
 
@@ -20,7 +14,6 @@ const Comment = (props) => {
           .then(
             (result) => {
               setIsLoaded(true);
-              console.log("comment", result)
               setItem(result);
             },
             (error) => {
@@ -37,13 +30,11 @@ const Comment = (props) => {
             fetch("https://speakit-cs361.wl.r.appspot.com/posts/"+props.parent+"/comments")
             .then(res => res.json()
                 .then((result) => {
-                    //setIsLoaded(true);
-                    //console.log(result)
+
                 props.setState(result);
                 },
                 (error) => {
-                    //setIsLoaded(true);
-                    //setError(error);
+
                 }
                 )
             )

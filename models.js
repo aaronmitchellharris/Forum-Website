@@ -8,22 +8,6 @@ const fromDatastore = (obj) => {
     return obj;
 };
 
-const toDatastore = (obj, nonIndexed) => {
-    nonIndexed = nonIndexed || [];
-    const results = [];
-    Object.keys(obj).forEach((k) => {
-        if (obj[k] === undefined) {
-            return;
-        }
-        results.push({
-            name: k,
-            value: obj[k],
-            excludeFromIndexes: nonIndexed.indexOf(k) !== -1
-        });
-    });
-    return results;
-};
-
 const create = async (kind, data) => {
     
     const key = datastore.key(kind);

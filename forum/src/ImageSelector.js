@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import { Link, useParams } from 'react-router-dom'
 import { Button, Image, Form } from 'react-bootstrap'
 
 const width = {
@@ -35,13 +34,6 @@ const ImageSelector = (props) => {
             })
         }
         console.log(text)
-        
-        /*
-        if (text == "") {
-            setImages(["https://i.redd.it/3dtqj9opzsy71.jpg", "https://i.redd.it/aa7kyg1npry71.jpg", "https://i.redd.it/kxts24nhzsy71.jpg"]);
-        } else {
-            setImages([text, text, text])
-        }*/
     };
 
     if (images.length == 0) {
@@ -71,12 +63,3 @@ const ImageSelector = (props) => {
 }
 
 export default ImageSelector
-
-/*
-<Form onSubmit={findImage}>
-                <Form.Group>
-                    <Form.Label>Pick Thumbnail</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Keyword" name="keyword"/>
-                </Form.Group>
-                <Button variant="primary" type="submit">Search Images</Button>
-            </Form>*/

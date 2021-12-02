@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Card, Image, Accordion, Button, Row, Col } from 'react-bootstrap'
+import React from 'react';
 import './User.css';
 import LoggedIn from './LoggedIn';
 import NotLoggedIn from './NotLoggedIn';

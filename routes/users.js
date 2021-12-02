@@ -18,7 +18,6 @@ const check = async (username, password) => {
 }
 
 const checkPass = (user, password) => {
-    console.log('passwords: ', user.password, password)
     if (user.password == password) {
         return true;
     }
