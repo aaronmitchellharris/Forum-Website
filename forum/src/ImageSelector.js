@@ -24,12 +24,15 @@ const ImageSelector = (props) => {
             fetch(microservice).then(res => res.json())
             .then(
                 (result) => {
-                    setImages(result.link);
-                },
-                (error) => {
-                    setError(error);
+                    console.log(result)
+                    let r = result.links
+                    r = r.replace(/\s+/g, '');
+                    r = r.split(",")
+                    setImages(r);
                 }
-            )
+            ).catch(error => {
+                console.log(error)
+            })
         }
         console.log(text)
         
@@ -56,7 +59,10 @@ const ImageSelector = (props) => {
                 <Form.Control id="keyword" type="text" onChange={handleChange}/>
                 <Button onClick={findImage} variant="primary" type="button">Search Images</Button>  
                 <Form.Group>
-                    <Form.Check inline type="radio" name="thumbnail" value={images} label={<Image style={width} src={images} thumbnail/>}/>
+                    <Form.Check inline type="radio" name="thumbnail" value={images[0]} label={<Image style={width} src={images[0]} thumbnail/>}/>
+                    <Form.Check inline type="radio" name="thumbnail" value={images[1]} label={<Image style={width} src={images[1]} thumbnail/>}/>
+                    <Form.Check inline type="radio" name="thumbnail" value={images[2]} label={<Image style={width} src={images[2]} thumbnail/>}/>
+                    <Form.Check inline type="radio" name="thumbnail" value={images[3]} label={<Image style={width} src={images[3]} thumbnail/>}/>
                 </Form.Group>
             </div>
         )
