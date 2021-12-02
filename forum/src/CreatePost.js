@@ -19,6 +19,7 @@ const CreatePost = (props) => {
         const formData = new FormData(event.target),
             formDataObj = Object.fromEntries(formData.entries())
             formDataObj.category = category
+            formDataObj.user = props.user.username
 
         
         let URL = "https://speakit-cs361.wl.r.appspot.com/posts";

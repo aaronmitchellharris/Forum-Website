@@ -5,7 +5,7 @@ import Post from './Post'
 import CreatePost from './CreatePost'
 import './Category.css';
 
-const Category = () => {
+const Category = (props) => {
 
     let {category} = useParams();
 
@@ -44,7 +44,7 @@ const Category = () => {
                 {posts.map(post => (
                         <Col>
                         <Container key={post.id}>
-                            <Post id={post.id} self={post.self} setState={setPosts} category={category}/>
+                            <Post user={props.user} setUser={props.setUser} isLogin={props.isLogin} id={post.id} self={post.self} setState={setPosts} category={category}/>
                         </Container>
                         </Col>
                     ))}

@@ -43,6 +43,14 @@ router.post('/', (req, res) => {
 
 });
 
+router.put('/:post_id', (req, res) => {
+    const id = parseInt(req.params.post_id, 10);
+
+    model.update(POST, id, req.body).then(obj => {
+        res.status(201).json(obj);
+    })
+});
+
 router.get('/:post_id', (req, res) => {
     
     const id = parseInt(req.params.post_id, 10);
@@ -62,6 +70,7 @@ router.get('/:post_id', (req, res) => {
                 "dislikes": obj.dislikes,
                 "content": obj.content,
                 "thumbnail": obj.thumbnail,
+                "comments": obj.comments,
                 "self": createSelf(req, id)
             };
 
@@ -69,6 +78,27 @@ router.get('/:post_id', (req, res) => {
         }
     });
 });
+
+router.get('/:post_id/comments', (req, res) => {
+    
+    const id = parseInt(req.params.post_id, 10);
+ 
+    model.read(POST, id).then(post => {
+
+        if (post == null) {
+            res.status(404).send({"Error": "No post with this post_id exists"});
+        } else {
+            const comments = post.comments;
+
+            comments.forEach(comment => {
+                comment.self = createSelf(req, '/comments', comment.id);
+            });
+
+            res.status(200).json(comments);
+        }
+    });
+});
+
 
 router.delete('/:post_id', (req, res) => {
     

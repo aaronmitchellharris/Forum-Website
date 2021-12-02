@@ -11,19 +11,16 @@ const width = {
 
 const User = (props) => {
 
-    const [isLogin, setLogin] = useState(false)
-
-
-    if (isLogin) {
+    if (props.isLogin) {
         return (
-            <div>
-                <LoggedIn setState={setLogin}/>
+            <div style={width}>
+                <LoggedIn user={props.user} setUser={props.setUser} login={props.isLogin} setState={props.setLogin}/>
             </div>
         )
     } else {
         return (
             <div>
-                <NotLoggedIn setState={setLogin}/>
+                <NotLoggedIn setState={props.setLogin}/>
             </div>
         )
     }
